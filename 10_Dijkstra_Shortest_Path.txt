@@ -1,0 +1,66 @@
+10. Dijkstra's Shortest Path Algorithm
+
+Aim
+To implement Dijkstra's algorithm to find the shortest path.
+
+Algorithm
+1. Start the program.
+2. Store the weighted graph in an adjacency matrix and use INF to represent a missing edge.
+3. Initialize the distance of every vertex to INF and mark every vertex as unvisited.
+4. Set the source vertex distance to zero.
+5. Select the unvisited vertex with the smallest known distance.
+6. If no reachable unvisited vertex remains, end the loop.
+7. Mark the selected vertex as visited.
+8. Examine each adjacent vertex that has not been visited.
+9. Calculate the distance through the selected vertex.
+10. If the calculated distance is smaller than the currently stored distance, update it.
+11. Repeat the selection and update steps for all vertices.
+12. Display the shortest distance from the source to each vertex.
+13. Stop the program.
+
+Program (C)
+#include <stdio.h>
+#define INF 999
+
+int main() {
+    int g[4][4] = {
+        {0, 4, 1, INF},
+        {4, 0, 2, 5},
+        {1, 2, 0, 8},
+        {INF, 5, 8, 0}
+    };
+    int d[4], v[4]={0}, i,j,u,min;
+
+    for(i=0;i<4;i++) d[i]=INF;
+    d[0]=0;
+
+    for(i=0;i<4;i++) {
+        min=INF;
+        u=-1;
+        for(j=0;j<4;j++)
+            if(!v[j] && d[j]<min)
+                min=d[j],u=j;
+
+        if(u==-1) break;
+        v[u]=1;
+
+        for(j=0;j<4;j++)
+            if(!v[j] && g[u][j]!=INF &&
+               d[u]+g[u][j]<d[j])
+                d[j]=d[u]+g[u][j];
+    }
+
+    for(i=0;i<4;i++)
+        printf("Distance to %d = %d\n",i,d[i]);
+
+    return 0;
+}
+
+Output
+Distance to 0 = 0
+Distance to 1 = 3
+Distance to 2 = 1
+Distance to 3 = 8
+
+Result
+Dijkstra's algorithm was implemented successfully.

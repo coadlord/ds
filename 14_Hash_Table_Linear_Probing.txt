@@ -1,0 +1,48 @@
+14. Hash Table Using Linear Probing
+
+Aim
+To implement a hash table using linear probing.
+
+Algorithm
+1. Start the program.
+2. Declare a hash table of ten positions and initialize every position to zero.
+3. Store the keys 12, 22, 32, and 15 in an array.
+4. Process each key one by one.
+5. Calculate the initial hash index by taking the key modulo 10.
+6. If the position is occupied, move to the next position.
+7. Continue checking positions, wrapping from index 9 to index 0 when necessary.
+8. Store the key in the first empty position found.
+9. Repeat until all keys have been inserted.
+10. Display every hash-table index and its stored value.
+11. Stop the program.
+
+Program (C)
+#include <stdio.h>
+int main() {
+    int h[10]={0},a[]={12,22,32,15},i,k;
+    for(i=0;i<4;i++) {
+        k=a[i]%10;
+        while(h[k]!=0) k=(k+1)%10;
+        h[k]=a[i];
+    }
+    printf("Hash Table:\n");
+    for(i=0;i<10;i++)
+        printf("%d : %d\n",i,h[i]);
+    return 0;
+}
+
+Output
+Hash Table:
+0 : 0
+1 : 0
+2 : 12
+3 : 22
+4 : 32
+5 : 15
+6 : 0
+7 : 0
+8 : 0
+9 : 0
+
+Result
+The hash table was implemented using linear probing successfully.

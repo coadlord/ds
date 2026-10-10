@@ -1,0 +1,74 @@
+2. Doubly Linked List
+
+Algorithm
+1. Start the program.
+2. Declare a structure named node with data, prev, and next fields.
+3. Initialize the head pointer to NULL.
+4. Read the number of nodes to be created.
+5. Repeat for every node:
+   a. Allocate memory for a new node.
+   b. Read the data value.
+   c. Set the new node's prev and next pointers to NULL.
+   d. If the list is empty, make the new node the head.
+   e. Otherwise, connect the previous node's next pointer to the new node.
+   f. Set the new node's prev pointer to the previous node.
+   g. Update the temporary pointer to the new node.
+6. Set the temporary pointer to head.
+7. Visit each node from the first node to the last node.
+8. Print the data stored in every node.
+9. Stop the program.
+
+C Program
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+int data;
+struct node *prev, *next;
+};
+
+int main() {
+struct node *head = NULL, *newnode, *temp;
+int i, n;
+
+printf("Enter number of nodes: ");
+scanf("%d", &n);
+
+for(i = 0; i < n; i++) {
+    newnode = malloc(sizeof(struct node));
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+    newnode->prev = NULL;
+    newnode->next = NULL;
+
+    if(head == NULL)
+        head = newnode;
+    else {
+        temp->next = newnode;
+        newnode->prev = temp;
+    }
+    temp = newnode;
+}
+
+temp = head;
+printf("Doubly Linked List: ");
+while(temp != NULL) {
+    printf("%d ", temp->data);
+    temp = temp->next;
+}
+return 0;
+}
+
+Output
+Enter number of nodes: 3
+Enter data: 10
+Enter data: 20
+Enter data: 30
+Doubly Linked List: 10 20 30
+
+Easy way to remember
+Singly: One pointer — next
+Doubly: Two pointers — prev and next
+
+Result
+The doubly linked list was implemented successfully.

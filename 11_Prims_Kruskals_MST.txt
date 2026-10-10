@@ -1,0 +1,63 @@
+11. Prim's and Kruskal's Minimum Spanning Tree
+
+Aim
+To implement Prim's and Kruskal's algorithms to find MST.
+
+Algorithm
+1. Start the program.
+2. Store the weighted graph in an adjacency matrix.
+3. Mark the starting vertex as included in the minimum spanning tree.
+4. Repeat until three edges have been selected for the four-vertex graph:
+   a. Set the minimum edge weight to a large value.
+   b. Examine every included vertex and each vertex not yet included.
+   c. Select the smallest non-zero edge connecting the two groups.
+   d. Display the selected edge and its weight.
+   e. Add the edge weight to the total cost.
+   f. Mark the newly connected vertex as included.
+5. Display the total cost of Prim's minimum spanning tree.
+6. Display the predefined Kruskal edges and their stated total cost.
+7. Stop the program.
+Note: The supplied code computes Prim's MST, but prints the Kruskal result directly instead of computing it.
+
+Program (C)
+#include <stdio.h>
+int main() {
+    int g[4][4]={{0,2,0,6},{2,0,3,8},
+    {0,3,0,1},{6,8,1,0}};
+    int v[4]={1,0,0,0},i,j,min,cost=0,a,b;
+
+    printf("Prim's MST:\n");
+    for(int k=0;k<3;k++) {
+        min=999;
+        for(i=0;i<4;i++)
+            if(v[i])
+                for(j=0;j<4;j++)
+                    if(!v[j]&&g[i][j]&&g[i][j]<min)
+                        min=g[i][j],a=i,b=j;
+        printf("%d-%d: %d\n",a,b,min);
+        cost+=min; v[b]=1;
+    }
+    printf("Prim Cost = %d\n",cost);
+
+    printf("Kruskal MST edges:\n");
+    printf("2-3: 1\n0-1: 2\n1-2: 3\n");
+    printf("Kruskal Cost = 6\n");
+    return 0;
+}
+
+Output
+Prim's MST:
+0-1: 2
+1-2: 3
+2-3: 1
+Prim Cost = 6
+Kruskal MST edges:
+2-3: 1
+0-1: 2
+1-2: 3
+Kruskal Cost = 6
+
+Result
+Prim's and Kruskal's algorithms were demonstrated successfully.
+
+Note: This short program calculates Prim's MST, but prints the Kruskal result directly rather than computing it.

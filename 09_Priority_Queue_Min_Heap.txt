@@ -1,0 +1,51 @@
+9. Priority Queue Using Min Heap
+
+Aim
+To implement a priority queue using a min heap.
+
+Algorithm
+1. Start the program.
+2. Declare an array to store the min heap and initialize the number of elements to zero.
+3. Define an insert function that accepts a new value.
+4. Place the new value at the next available array position.
+5. Compare the new value with its parent, whose index is (i-1)/2.
+6. While the parent is greater than the new value, move the parent down and continue toward the root.
+7. Place the new value in its correct position to maintain the min-heap property.
+8. Insert the values 30, 10, 20, and 5 into the heap.
+9. Display all heap elements in array order.
+10. Display the root element, which is the minimum value.
+11. Stop the program.
+
+Program (C)
+#include <stdio.h>
+int h[20], n=0;
+
+void insert(int x) {
+    int i=n++;
+    while(i>0 && h[(i-1)/2]>x) {
+        h[i]=h[(i-1)/2];
+        i=(i-1)/2;
+    }
+    h[i]=x;
+}
+
+int main() {
+    insert(30);
+    insert(10);
+    insert(20);
+    insert(5);
+
+    printf("Min Heap: ");
+    for(int i=0;i<n;i++)
+        printf("%d ",h[i]);
+
+    printf("\nMinimum: %d",h[0]);
+    return 0;
+}
+
+Output
+Min Heap: 5 10 20 30
+Minimum: 5
+
+Result
+The priority queue was implemented using a min heap successfully.

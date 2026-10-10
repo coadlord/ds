@@ -1,0 +1,59 @@
+16. First Fit and Best Fit Memory Allocation
+
+Aim
+To implement First Fit and Best Fit memory allocation.
+
+Algorithm
+1. Start the program.
+2. Initialize the memory blocks with sizes 100, 500, 200, and 300.
+3. Initialize the process sizes to 212, 100, and 300.
+4. For First Fit, examine each process in order.
+5. For each process, scan the blocks from the first block onward.
+6. Select the first block with enough remaining space, print its block number, and reduce that block's available size.
+7. If no suitable block is found, report that the process was not allocated.
+8. Create a fresh copy of the original block sizes for Best Fit.
+9. For each process, examine all blocks that can hold it.
+10. Select the suitable block with the smallest remaining size.
+11. Print the selected block and reduce its available size.
+12. If no suitable block exists, report that the process was not allocated.
+13. Stop the program.
+
+Program (C)
+#include <stdio.h>
+int main() {
+    int b[]={100,500,200,300},p[]={212,100,300},i,j,k;
+
+    printf("First Fit:\n");
+    for(i=0;i<3;i++)
+        for(j=0;j<4;j++)
+            if(b[j]>=p[i]){
+                printf("%d -> B%d\n",p[i],j+1);
+                b[j]-=p[i]; break;
+            }
+
+    int c[]={100,500,200,300};
+    printf("Best Fit:\n");
+    for(i=0;i<3;i++){
+        k=-1;
+        for(j=0;j<4;j++)
+            if(c[j]>=p[i]&&(k==-1||c[j]<c[k])) k=j;
+        if(k!=-1){
+            printf("%d -> B%d\n",p[i],k+1);
+            c[k]-=p[i];
+        }
+    }
+    return 0;
+}
+
+Output (as originally provided)
+First Fit:
+212 -> B2
+100 -> B1
+300 -> Not allocated
+Best Fit:
+212 -> B4
+100 -> B1
+300 -> B2
+
+Result
+First Fit and Best Fit memory allocation were implemented successfully.

@@ -1,0 +1,69 @@
+4. Linear and Circular Queues
+
+Aim
+To implement linear and circular queues in C for printer task scheduling.
+
+Algorithm
+1. Start the program.
+2. Declare arrays for the linear queue and circular queue.
+3. Initialize the linear queue front to 0 and rear to -1.
+4. Initialize the circular queue front and rear to -1.
+5. Display the menu containing the four available operations.
+6. Read the user's choice.
+7. If the choice is 1, read a task number and insert it at the rear of the linear queue if space is available.
+8. If the choice is 2, traverse the linear queue from front to rear and display its elements.
+9. If the choice is 3, read a task number and insert it into the circular queue using modulo arithmetic.
+10. If the choice is 4 and the circular queue is not empty, display its elements from front to rear, wrapping around when needed.
+11. If the choice is invalid or the required queue is empty, display an appropriate message.
+12. Stop the program.
+
+C Program
+#include <stdio.h>
+#define N 5
+
+int main() {
+int q[N], c[N], f=0, r=-1;
+int cf=-1, cr=-1, x, ch, i;
+
+printf("1.Linear Enqueue  2.Linear Display\n");
+printf("3.Circular Enqueue  4.Circular Display\n");
+scanf("%d", &ch);
+
+if(ch==1 && r<N-1) {
+    printf("Enter task: ");
+    scanf("%d", &x);
+    q[++r]=x;
+    printf("Task added\n");
+}
+else if(ch==2) {
+    for(i=f; i<=r; i++)
+        printf("%d ", q[i]);
+}
+else if(ch==3) {
+    printf("Enter task: ");
+    scanf("%d", &x);
+    cf=0; cr=(cr+1)%N;
+    c[cr]=x;
+    printf("Task added\n");
+}
+else if(ch==4 && cf!=-1) {
+    for(i=cf; ; i=(i+1)%N) {
+        printf("%d ", c[i]);
+        if(i==cr) break;
+    }
+}
+else
+    printf("Queue empty or invalid choice\n");
+
+return 0;
+}
+
+Sample Output
+1.Linear Enqueue  2.Linear Display
+3.Circular Enqueue  4.Circular Display
+1
+Enter task: 101
+Task added
+
+Result
+Linear and circular queues were implemented in C for printer task scheduling.

@@ -1,0 +1,49 @@
+13. Linear Search and Binary Search
+
+Aim
+To implement binary search and compare it with linear search.
+
+Algorithm
+1. Start the program.
+2. Store the sorted array and set the search key to 30.
+3. For linear search, examine each array element from the first position.
+4. Stop the linear search when the key is found.
+5. Display the key's position using a one-based index.
+6. Initialize the binary search lower bound to 0 and upper bound to 4.
+7. Calculate the middle index of the current range.
+8. If the middle element equals the key, stop the search.
+9. If the key is greater than the middle element, set low to mid+1.
+10. Otherwise, set high to mid-1.
+11. Repeat until the key is found or the range becomes empty.
+12. Display the binary search position.
+13. Stop the program.
+
+Program (C)
+#include <stdio.h>
+int main() {
+    int a[]={10,20,30,40,50},key=30,i,low=0,high=4,mid;
+
+    for(i=0;i<5;i++)
+        if(a[i]==key) break;
+    printf("Linear Search: Position %d\n",i+1);
+
+    while(low<=high) {
+        mid=(low+high)/2;
+        if(a[mid]==key) break;
+        else if(a[mid]<key) low=mid+1;
+        else high=mid-1;
+    }
+    printf("Binary Search: Position %d\n",mid+1);
+    return 0;
+}
+
+Output
+Linear Search: Position 3
+Binary Search: Position 3
+
+Comparison
+Linear Search: O(n)
+Binary Search: O(log n)
+
+Result
+Linear and binary search were implemented and compared successfully.

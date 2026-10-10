@@ -1,0 +1,49 @@
+3. Postfix Expression Evaluation Using Stack
+
+Algorithm
+1. Start the program.
+2. Store the postfix expression in a character array.
+3. Initialize the stack top to -1.
+4. Scan the expression from left to right, one character at a time.
+5. If the current character is a digit, convert it to an integer and push it onto the stack.
+6. If the current character is an operator:
+   a. Pop the top value and store it in b.
+   b. Pop the next value and store it in a.
+   c. Perform the operation a operator b.
+   d. Push the calculated value onto the stack.
+7. Continue until the end of the expression is reached.
+8. The value remaining at the top of the stack is the final answer.
+9. Display the result.
+10. Stop the program.
+
+C Program
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+char exp[] = "23*5+";
+int s[10], top = -1, i, a, b;
+
+for(i = 0; exp[i]; i++) {
+    if(isdigit(exp[i]))
+        s[++top] = exp[i] - '0';
+    else {
+        b = s[top--];
+        a = s[top--];
+
+        if(exp[i] == '+') s[++top] = a + b;
+        if(exp[i] == '*') s[++top] = a * b;
+    }
+}
+
+printf("Result = %d", s[top]);
+return 0;
+}
+
+Output
+Result = 11
+
+Calculation: 2 × 3 + 5 = 11
+
+Result
+The postfix expression was evaluated successfully.

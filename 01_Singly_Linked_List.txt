@@ -1,0 +1,67 @@
+1. Singly Linked List
+
+Algorithm
+1. Start the program.
+2. Declare a structure named node containing an integer data field and a pointer to the next node.
+3. Initialize the head pointer to NULL.
+4. Read the number of nodes to be created.
+5. Repeat the following steps for each node:
+   a. Allocate memory for a new node.
+   b. Read the data value for the new node.
+   c. Set the new node's next pointer to NULL.
+   d. If the list is empty, assign the new node to head.
+   e. Otherwise, connect the previous node's next pointer to the new node.
+   f. Move the temporary pointer to the newly created node.
+6. Set the temporary pointer to head.
+7. Traverse the list until the temporary pointer becomes NULL.
+8. Print the data stored in each node.
+9. Stop the program.
+
+C Program
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+int data;
+struct node *next;
+};
+
+int main() {
+struct node *head = NULL, *newnode, *temp;
+int i, n;
+
+printf("Enter number of nodes: ");
+scanf("%d", &n);
+
+for(i = 0; i < n; i++) {
+    newnode = malloc(sizeof(struct node));
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+    newnode->next = NULL;
+
+    if(head == NULL)
+        head = newnode;
+    else
+        temp->next = newnode;
+
+    temp = newnode;
+}
+
+temp = head;
+printf("Singly Linked List: ");
+while(temp != NULL) {
+    printf("%d ", temp->data);
+    temp = temp->next;
+}
+return 0;
+}
+
+Output
+Enter number of nodes: 3
+Enter data: 10
+Enter data: 20
+Enter data: 30
+Singly Linked List: 10 20 30
+
+Result
+The singly linked list was implemented successfully.

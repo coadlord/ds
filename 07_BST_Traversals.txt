@@ -1,0 +1,57 @@
+7. Binary Search Tree Traversals
+
+Aim
+To implement a Binary Search Tree (BST) and perform inorder, preorder, and postorder traversal.
+
+Algorithm
+1. Start the program.
+2. Declare a node structure containing data and left and right child pointers.
+3. Create the required nodes and assign their data values.
+4. Link the nodes to form the binary tree.
+5. For inorder traversal:
+   a. Visit the left subtree.
+   b. Print the current node's data.
+   c. Visit the right subtree.
+6. For preorder traversal:
+   a. Print the current node's data.
+   b. Visit the left subtree.
+   c. Visit the right subtree.
+7. For postorder traversal:
+   a. Visit the left subtree.
+   b. Visit the right subtree.
+   c. Print the current node's data.
+8. Display the output of all three traversals.
+9. Stop the program.
+
+Program (C)
+#include <stdio.h>
+struct N { int d; struct N *l,*r; };
+struct N a,b,c,d,e;
+void in(struct N *t){
+ if(t){in(t->l);printf("%d ",t->d);in(t->r);}
+}
+void pre(struct N *t){
+ if(t){printf("%d ",t->d);pre(t->l);pre(t->r);}
+}
+void post(struct N *t){
+ if(t){post(t->l);post(t->r);printf("%d ",t->d);}
+}
+int main(){
+ a.d=50; a.l=&b; a.r=&c;
+ b.d=30; b.l=&d; b.r=&e;
+ c.d=70; c.l=c.r=NULL;
+ d.d=20; d.l=d.r=NULL;
+ e.d=40; e.l=e.r=NULL;
+
+ printf("Inorder: "); in(&a);
+ printf("\nPreorder: "); pre(&a);
+ printf("\nPostorder: "); post(&a);
+}
+
+Output
+Inorder: 20 30 40 50 70
+Preorder: 50 30 20 40 70
+Postorder: 20 40 30 70 50
+
+Result
+BST traversals were implemented successfully.

@@ -1,0 +1,49 @@
+8. Postfix Expression Evaluation
+
+Aim
+To evaluate a postfix expression using a stack.
+
+Algorithm
+1. Start the program.
+2. Declare a stack, initialize top to -1, and store the postfix expression.
+3. Scan each character in the expression from left to right.
+4. If the character is a digit, convert it to an integer and push it onto the stack.
+5. If the character is an operator:
+   a. Pop the second operand into b.
+   b. Pop the first operand into a.
+   c. Apply the operator to a and b.
+   d. Push the result onto the stack.
+6. Repeat until the null character at the end of the expression is reached.
+7. Display the original postfix expression.
+8. Display the value at the top of the stack as the evaluation result.
+9. Stop the program.
+
+Program (C)
+#include <stdio.h>
+
+int main() {
+    int s[10], top = -1, a, b;
+    char p[] = "23+4*";
+
+    for(int i = 0; p[i]; i++) {
+        if(p[i] >= '0' && p[i] <= '9')
+            s[++top] = p[i] - '0';
+        else {
+            b = s[top--];
+            a = s[top--];
+            if(p[i] == '+') s[++top] = a + b;
+            if(p[i] == '*') s[++top] = a * b;
+        }
+    }
+
+    printf("Postfix expression: %s\n", p);
+    printf("Evaluation result: %d", s[top]);
+    return 0;
+}
+
+Output
+Postfix expression: 23+4*
+Evaluation result: 20
+
+Result
+The postfix expression was evaluated successfully.

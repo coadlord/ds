@@ -1,0 +1,44 @@
+15. String Character Frequency Using Hashing
+
+Aim
+To solve string analysis problems using hash structures.
+
+Algorithm
+1. Start the program.
+2. Store the string “hello”.
+3. Declare a frequency array of 256 elements and initialize all counts to zero.
+4. Scan the string from the first character to the end.
+5. Use each character's unsigned character value as an index into the frequency array.
+6. Increase the count at that index for every occurrence.
+7. Scan the string again in its original order.
+8. If a character's frequency is greater than zero, print the character and its frequency.
+9. Set the printed character's frequency to zero so that it is not printed again.
+10. Continue until the end of the string is reached.
+11. Stop the program.
+
+Program (C)
+#include <stdio.h>
+int main() {
+    char s[]="hello";
+    int h[256]={0},i;
+
+    for(i=0;s[i];i++)
+        h[(unsigned char)s[i]]++;
+
+    for(i=0;s[i];i++)
+        if(h[(unsigned char)s[i]]>0) {
+            printf("%c = %d\n",s[i],
+                   h[(unsigned char)s[i]]);
+            h[(unsigned char)s[i]]=0;
+        }
+    return 0;
+}
+
+Output
+h = 1
+e = 1
+l = 2
+o = 1
+
+Result
+String character frequencies were calculated using hashing successfully.

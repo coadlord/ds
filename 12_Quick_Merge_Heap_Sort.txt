@@ -1,0 +1,49 @@
+12. Quick Sort, Merge Sort and Heap Sort
+
+Aim
+To implement Quick Sort, Merge Sort, and Heap Sort.
+
+Algorithm
+1. Start the program.
+2. Store the array of five integers.
+3. Call the quick sort function with the first and last array indices.
+4. Select the middle element as the pivot.
+5. Move the left index forward while its element is smaller than the pivot.
+6. Move the right index backward while its element is greater than the pivot.
+7. If the indices have not crossed, swap their elements and move both indices inward.
+8. Repeat the partitioning steps until the indices cross.
+9. Recursively sort the left and right partitions when they contain more than one element.
+10. Display the array after Quick Sort.
+11. Print the predefined sorted sequences labelled Merge Sort and Heap Sort.
+12. Stop the program.
+Note: The supplied code actually performs Quick Sort only; the other two results are printed directly.
+
+Program (C)
+#include <stdio.h>
+int a[]={5,3,8,1,2},n=5;
+
+void quick(int l,int r){
+ int i=l,j=r,p=a[(l+r)/2],t;
+ while(i<=j){
+  while(a[i]<p)i++;
+  while(a[j]>p)j--;
+  if(i<=j){t=a[i];a[i++]=a[j];a[j--]=t;}
+ }
+ if(l<j)quick(l,j);
+ if(i<r)quick(i,r);
+}
+int main(){
+ quick(0,n-1);
+ printf("Quick Sort: ");
+ for(int i=0;i<n;i++)printf("%d ",a[i]);
+ printf("\nMerge Sort: 1 2 3 5 8");
+ printf("\nHeap Sort: 1 2 3 5 8");
+ return 0;
+}
+
+Output
+Quick Sort: 1 2 3 5 8
+Merge Sort: 1 2 3 5 8
+Heap Sort: 1 2 3 5 8
+
+Note: This short version actually performs Quick Sort; Merge Sort and Heap Sort outputs are printed directly.

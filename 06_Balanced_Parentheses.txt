@@ -1,0 +1,53 @@
+6. Balanced Parentheses Using Stack
+
+Aim
+To check whether parentheses in an expression are balanced.
+
+Algorithm
+1. Start the program.
+2. Declare a character array for the expression and another array to act as a stack.
+3. Initialize the stack top to -1.
+4. Read the expression.
+5. Scan each character from left to right.
+6. If an opening parenthesis '(' is found, push it onto the stack.
+7. If a closing parenthesis ')' is found:
+   a. Check whether the stack is empty.
+   b. If it is empty, stop scanning because the expression is unbalanced.
+   c. Otherwise, pop one opening parenthesis from the stack.
+8. After scanning, check whether the entire expression was processed and the stack is empty.
+9. If both conditions are true, print “Balanced”.
+10. Otherwise, print “Not Balanced”.
+11. Stop the program.
+
+Program
+#include <stdio.h>
+
+int main() {
+char s[50], st[50];
+int i, top=-1;
+
+scanf("%s", s);
+
+for(i=0; s[i]; i++) {
+    if(s[i]=='(')
+        st[++top]='(';
+    else if(s[i]==')') {
+        if(top==-1) break;
+        top--;
+    }
+}
+
+if(s[i]=='\0' && top==-1)
+    printf("Balanced");
+else
+    printf("Not Balanced");
+
+return 0;
+}
+
+Output
+(a+b)
+Balanced
+
+Result
+Parentheses are checked successfully using a stack.
